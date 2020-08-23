@@ -1,0 +1,21 @@
+// a function that is looking for a sub sequence of following elements of the array which their sum equals to the @param num 
+public static boolean betterWhat(int[] a, int num) {
+        int l = 0, r = 1, sum = a[l];
+        while (l <= r) {
+            if (sum == num) {
+                System.out.println("a[" + l + "]=" + a[l] + "...a[" + r + "]=" + a[r]);
+                return true;
+            }
+            if (sum < num) {
+                if (r == a.length) {
+                    return false;
+                }
+                sum += a[r];
+                r++;
+            } else {
+                sum -= a[l];
+                l++;
+            }
+        }
+        return false;
+    }
