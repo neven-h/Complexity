@@ -1,7 +1,12 @@
 public class Road {
 
     public static int shortestRoad(int []a, int []b){
-       return switchPoint(a, b, 0);
+        int min = switchPoint(a, b, 0);
+        for (int i = 1; i < a.length; i++) {
+            int temp = switchPoint(a, b, i);
+            min = (temp < min) ? temp : min;
+        }
+        return min;
     }
 
     public static int switchPoint(int []a, int[] b, int switch){
@@ -13,7 +18,6 @@ public class Road {
         for(int j=switch; j<b.length; j++ ){
             sumB += b[j];
         }
-
-        //missing the part where i apply an action over switch
+        return sumA + sumB;
     }
 }
